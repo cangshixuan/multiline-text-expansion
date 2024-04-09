@@ -17,15 +17,51 @@
       text-align: justify;
     }
     .text-content {
-      height: 68px;
       overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical; 
+
+      &::before {
+        content: '';
+        float: right;
+        height: calc(100% - 20px);
+      }
     }
+    .expand-button {
+      float: right;
+      height: 18px;
+      line-height: 18px;
+      padding: 0 8px;
+      clear: both;
+      color: #FFFFFF;
+      background-color: #9747FF;
+      cursor: pointer;
+      font-size: 14px;
+      border: none;
+    }
+    #expand-control{
+      display: none;
+    }
+    #expand-control:checked + .text-content{
+      -webkit-line-clamp: 999;
+    }
+    #expand-control:checked + .text-content .expand-button::after{
+      content:'收起';
+    }
+    .expand-button::after{
+      content:'展开';
+    }
+
   </style>
 </head>
 <body>
   <div class="text-wrap">
+    <input type="checkbox" id="expand-control">
     <div class="text-content">
-      这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本
+      <label class="expand-button" for="expand-control"></label>
+      这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本这是一个多行文本
     </div>
   </div>
 </body>
